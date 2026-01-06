@@ -49,16 +49,16 @@ test-bithash: DFLAGS=-DBITARR_HASH_OPT -DBACKEND_GPU
 test-cpu: DFLAGS=-DBACKEND_CPU
 
 check_pybind11:
-	python -c "import pybind11" 2>/dev/null || (echo "Installing pybind11..." && pip install pybind11)
+	python3 -c "import pybind11" 2>/dev/null || (echo "Installing pybind11..." && pip install pybind11)
 
 # Dynamic library rules
 cpu: $(CPU_SRC) check_pybind11
 	$(CXX) ${INCLUDES} $(CXXOPTIONS) ${DFLAGS} -fPIC -shared -O3 ${CPU_SRC} -o $(LIBNAME)
-	__BACKEND=BACKEND_CPU ${PY_ENV} python interface/python/setup.py build_ext --inplace
+	__BACKEND=BACKEND_CPU ${PY_ENV} python3 interface/python/setup.py build_ext --inplace
 
 gpu: $(GPU_SRC) check_pybind11
 	$(NVCC) ${INCLUDES} $(NVCCOPTIONS) ${DFLAGS} ${RELEASED} $(DEBUG_OPTIONS) $(INCLUDES) -Xcompiler "-fPIC -shared" ${GPU_SRC} -O3 -lineinfo -o $(LIBNAME) -L$(LIB_DIR)
-	__BACKEND=BACKEND_GPU ${PY_ENV} python interface/python/setup.py build_ext --inplace
+	__BACKEND=BACKEND_GPU ${PY_ENV} python3 interface/python/setup.py build_ext --inplace
 
 # fp64: model precison and psi_type is Float64
 # hamCplx64: Hamiltonian coeff is Complex64
@@ -84,7 +84,7 @@ $(TEST_TARGETS_GPU): gpu $(TEST_GPU_OBJECTS)
 
 # test interface
 test_python_interface:
-	python test/test_eloc.py
+	python3 test/test_eloc.py
 
 test_julia_interface:
 	julia test/test_eloc.jl

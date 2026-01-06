@@ -154,9 +154,9 @@ void calculate_local_energy_kernel(
             coeff_dtype coef = 0.0;
 
             int st = idxs[sid], ed = idxs[sid+1];
-            for (int i = st; i < ed; i++) {
+            for (int i = st; i < ed; i++) { 
                 int _sum = 0;
-                for (int ik = 0; ik < N; ik++) {
+                for (int ik = 0; ik < N; ik++) { // 按位与累加运算
                     _sum += state_batch[ii*N+ik] & pauli_mat23[i_base+ik];
                 }
                 // coef += ((-1)^(_sum)) * coeffs[i]; // pow_n?

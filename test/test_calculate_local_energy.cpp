@@ -174,15 +174,15 @@ void perf_test() {
 }
 
 int main() {
-    perf_test();
-    return 0;
+    // perf_test();
+    // return 0;
     //std::string molecule_name = "testcases/h2";
-    // std::string molecule_name = "testcases/lih";
+    std::string molecule_name = "testcases/lih";
     // std::string molecule_name = "testcases/li2o";
     // std::string molecule_name = "testcases/c2h4o";
     // std::string molecule_name = "testcases/c3h6";
     // std::string molecule_name = "testcases/c2h4o2";
-    std::string molecule_name = "testcases/h2o4s";
+    // std::string molecule_name = "testcases/h2o4s";
     std::string ham_file = molecule_name + ".ham";
     std::string data_file = molecule_name + ".indata";
     //test(ham_file, data_file);
