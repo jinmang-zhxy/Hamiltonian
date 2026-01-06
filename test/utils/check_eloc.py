@@ -33,7 +33,7 @@ def gen_random_ham(n_orb=4, eps=1e-12, seed=111, is_save_ham=True):
     op_name = ""
     if is_save_ham:
         qubit_op = openfermion.jordan_wigner(ham)
-        op_name = f"{fname}-qubit_op.data"
+        op_name = f"./{fname}-qubit_op.data"
         utils.save_binary_qubit_op(qubit_op, filename=op_name)
         print("Qubit Hamiltonian saved to %s." % (op_name))
 

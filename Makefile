@@ -84,7 +84,7 @@ $(TEST_TARGETS_GPU): gpu $(TEST_GPU_OBJECTS)
 
 # test interface
 test_python_interface:
-	python3 test/test_eloc.py
+	PYTHONPATH=. python3 test/test_eloc.py
 
 test_julia_interface:
 	julia test/test_eloc.jl

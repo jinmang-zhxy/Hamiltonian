@@ -176,17 +176,25 @@ void perf_test() {
 int main() {
     // perf_test();
     // return 0;
+    std::string dir = "testcases/";
+    std::vector<std::string> molecule_names = {"h2", "lih", "h2o"};
     //std::string molecule_name = "testcases/h2";
-    std::string molecule_name = "testcases/lih";
+    // std::string molecule_name[] = {"testcases/lih"};
     // std::string molecule_name = "testcases/li2o";
     // std::string molecule_name = "testcases/c2h4o";
     // std::string molecule_name = "testcases/c3h6";
     // std::string molecule_name = "testcases/c2h4o2";
     // std::string molecule_name = "testcases/h2o4s";
-    std::string ham_file = molecule_name + ".ham";
-    std::string data_file = molecule_name + ".indata";
-    //test(ham_file, data_file);
-    test_bigInt(ham_file, data_file);
+    for (auto &molecule_name : molecule_names) {
+        std::string ham_file = dir + molecule_name + ".ham";
+        std::string data_file = dir + molecule_name + ".indata";
+        std::cout << "test for " << molecule_name << std::endl;
+        test(ham_file, data_file);
+        std::cout << "----------PASS--------\n\n";
+        // test_bigInt(ham_file, data_file);
+    }
+    
+    
 
     return 0;
 }
