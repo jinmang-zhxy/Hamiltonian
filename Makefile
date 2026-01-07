@@ -49,7 +49,7 @@ test-bithash: DFLAGS=-DBITARR_HASH_OPT -DBACKEND_GPU
 test-cpu: DFLAGS=-DBACKEND_CPU
 
 check_pybind11:
-	python3 -c "import pybind11" 2>/dev/null || (echo "Installing pybind11..." && pip install pybind11)
+	python3 -c "import pybind11" 2>/dev/null || (echo "Installing pybind11..." && python3 -m pip install pybind11)
 
 # Dynamic library rules
 cpu: $(CPU_SRC) check_pybind11
